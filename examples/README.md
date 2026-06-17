@@ -26,7 +26,7 @@ Here is a more detailed explanation of what the demo script is doing:
 cd mysql
 
 # Start Redis & MySQL services
-docker-compose up -d redis mysql
+docker-compose up -d redis db
 # Wait for services to come up fully...
 
 # Start Superset
@@ -49,7 +49,7 @@ docker-compose down -v
 cd postgres
 
 # Start Redis & PostgreSQL services
-docker-compose up -d redis postgres
+docker-compose up -d redis db
 # Wait for services to come up fully...
 
 # Start Superset
@@ -99,7 +99,7 @@ docker-compose down -v
 cd celery
 
 # Start Redis & PostgreSQL services
-docker-compose up -d redis postgres
+docker-compose up -d redis db
 # Wait for services to come up fully...
 
 # Start Superset
