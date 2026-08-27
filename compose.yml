@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: superset
+      POSTGRES_PASSWORD: superset
+      POSTGRES_USER: superset
+    volumes:
+      - postgres:/var/lib/postgresql
+
+  redis:
+    image: redis
+    restart: always
+    volumes:
+      - redis:/data
+
+  superset:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - db
+      - redis
+    environment:
+      MAPBOX_API_KEY: ${MAPBOX_API_KEY}
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./examples/postgres/superset_config.py:/etc/superset/superset_config.py
+
+volumes:
+  postgres:
+  redis:
