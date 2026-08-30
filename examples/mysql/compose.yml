@@ -1,7 +1,7 @@
 services:
   db:
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    image: mysql:8
+    image: mysql
     restart: always
     environment:
       MYSQL_DATABASE: superset
